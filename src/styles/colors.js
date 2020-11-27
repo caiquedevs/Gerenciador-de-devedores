@@ -1,0 +1,10 @@
+export const dark = '#000000';
+export const ligth = '#ffffff';
+export const darkBlue = '#0984DA';
+export const lightBlue = '#0984DA';
+export const textDark = '#423F52';
+export const textLigth = '#64686C';
+export const iconDisabled = '#58C3FF';
+export const iconEnable = '#ffffff';
+export const bgIconEnable = '#0790F3';
+export const bgItemListActive = '#FAFCFF';
