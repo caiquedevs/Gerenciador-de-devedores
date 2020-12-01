@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { FaWindowClose } from 'react-icons/fa';
 import * as actionsApp from '../../store/modules/app/actions';
 
-import { ContainerModal, Modal } from './styled';
+import { ContainerModal, Modal, BtnCloseModal } from './styled';
 import { Select } from '../../styles';
 
 export default function RegisterModal({ setItemMenuActive }) {
@@ -52,6 +53,15 @@ export default function RegisterModal({ setItemMenuActive }) {
 
       {/* Modal de Registro */}
       <Modal onSubmit={(e) => handleClickNewDivida(e)}>
+        <BtnCloseModal
+          type="button"
+          onClick={() => {
+            dispatch(actionsApp.modalRegisterStatus(false));
+            setItemMenuActive('home');
+          }}
+        >
+          <FaWindowClose />
+        </BtnCloseModal>
         <h2>Cadastre um novo Devedor !</h2>
         <p>
           Preencha o formulário a baixo para cadastrar um novo devedor para sua
@@ -84,7 +94,11 @@ export default function RegisterModal({ setItemMenuActive }) {
           id="valor"
           onChange={(e) => setMotivoDevedor(e.target.value)}
         />
-        <button onClick={(e) => handleClickNewDivida(e)} type="submit">
+        <button
+          className="btn-create"
+          onClick={(e) => handleClickNewDivida(e)}
+          type="submit"
+        >
           Criar
         </button>
       </Modal>
