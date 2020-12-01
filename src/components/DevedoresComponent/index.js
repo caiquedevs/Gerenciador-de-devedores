@@ -1,51 +1,62 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actionsApp from '../../store/modules/app/actions';
 
-import { TitleList, List, ItemList } from './styled';
+import { TitleList, List, ItemList, EmptyList } from './styled';
 
 import folder from '../../assets/folder.svg';
-import optionsIcon from '../../assets/options.svg';
 import documentIcon from '../../assets/document.svg';
 
-const devedoresFakes = [1, 2, 3, 5, 6, 7];
+export default function DevedoresComponent() {
+  const devedores = useSelector((state) => state.app.devedores);
+  const dispatch = useDispatch();
 
-export default function DevedoresComponent({
-  devedores,
-  setActiveUpdateModal,
-}) {
+  const handleClickShowDividas = (idUsuario) => {
+    dispatch(actionsApp.selectDevedor(idUsuario));
+  };
+
   return (
     <section>
+      {/* Titulo da lista  */}
       <TitleList>
         <img src={folder} alt="folder icon" />
         <figcaption>Devedores cadastrados</figcaption>
       </TitleList>
 
+      {/* Mostrar enquanto nao carrega a lista */}
+      {!devedores ? (
+        <EmptyList>
+          <span>Carregando...</span>
+        </EmptyList>
+      ) : null}
+
+      {/* Mostrar quando lista esta vazia */}
+      {devedores.length === 0 ? (
+        <EmptyList>
+          <span>Sua lista está vazia</span>
+        </EmptyList>
+      ) : null}
+
+      {/* Lista de devedores */}
       <List>
-        {devedoresFakes.map((devedor) => (
-          <ItemList key={devedor}>
-            <button className="btn-options" type="button">
-              <img src={optionsIcon} alt="options icon" />
-            </button>
-
-            <div className="options-body">
-              <button type="button" onClick={() => setActiveUpdateModal(true)}>
-                Editar
+        {devedores.length > 0 &&
+          devedores.map((devedor, index) => (
+            <ItemList key={index}>
+              <button
+                type="button"
+                className="btn-info"
+                onClick={() => handleClickShowDividas(devedor.idUsuario)}
+              >
+                <img src={documentIcon} alt="document icon" />
+                <div className="text-group">
+                  <span>{devedor.nome}</span>
+                  <small>
+                    {devedor.qtd} {devedor.qtd > 1 ? 'dividas' : 'divida'}
+                  </small>
+                </div>
               </button>
-              <button type="button">Excluir</button>
-            </div>
-
-            <button
-              type="button"
-              className="btn-info"
-              onClick={() => {
-                setActiveUpdateModal(true);
-              }}
-            >
-              <img src={documentIcon} alt="document icon" />
-              <span>Menote Bugs</span>
-            </button>
-          </ItemList>
-        ))}
+            </ItemList>
+          ))}
       </List>
     </section>
   );
