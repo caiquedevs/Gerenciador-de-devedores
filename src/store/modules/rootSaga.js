@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 
-import devedores from './devedores/sagas';
+import app from './app/sagas';
 
 export default function* rootSaga() {
-  return yield all([devedores]);
+  return yield all([app]);
 }

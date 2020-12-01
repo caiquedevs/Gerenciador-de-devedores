@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import devedores from './devedores/reducer';
+import app from './app/reducer';
 
 export default combineReducers({
-  devedores,
+  app,
 });
