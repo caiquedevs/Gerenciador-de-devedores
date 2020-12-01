@@ -9,6 +9,7 @@ import documentIcon from '../../assets/document.svg';
 
 export default function DevedoresComponent() {
   const devedores = useSelector((state) => state.app.devedores);
+  const dividasPorDevedor = useSelector((state) => state.app.dividasPorDevedor);
   const dispatch = useDispatch();
 
   const handleClickShowDividas = (idUsuario) => {
@@ -58,7 +59,21 @@ export default function DevedoresComponent() {
             </ItemList>
           ))}
       </List>
-      <span id="info-footer">Selecione um devedor</span>
+
+      {devedores.length > 1 ? (
+        <>
+          <div className="info-footer">
+            <small>Arraste para o lado</small>
+          </div>
+        </>
+      ) : null}
+
+      {(devedores.length > 0 && !dividasPorDevedor) ||
+      (devedores.length > 0 && dividasPorDevedor.length === 0) ? (
+        <div className="info-footer">
+          <span>Selecione um devedor</span>
+        </div>
+      ) : null}
     </Section>
   );
 }

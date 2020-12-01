@@ -34,7 +34,7 @@ export const Modal = styled.form`
 
   position: fixed;
   top: 90px;
-  left: calc(50% - 180px);
+  left: calc(50% - 215px);
   z-index: 4;
 
   border-radius: 5px;
@@ -44,6 +44,11 @@ export const Modal = styled.form`
 
   @media screen and (min-width: 992px) {
     position: absolute;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 575px) {
+    max-width: 320px;
+    left: calc(50% - 160px);
   }
 
   h2 {
@@ -103,7 +108,7 @@ export const Modal = styled.form`
 
 export const BtnCloseModal = styled.button`
   color: ${colors.darkBlue};
-  font-size: 40px;
+  font-size: 30px;
   position: absolute;
   top: 25px;
   right: 25px;

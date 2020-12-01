@@ -4,16 +4,27 @@ import * as colors from '../../styles/colors';
 export const Section = styled.section`
   padding: 0 23px;
 
-  span#info-footer {
+  div.info-footer {
     width: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 18px;
-    font-weight: 400;
-    text-align: center;
-    color: #cecece;
+    small {
+      font-size: 18px;
+      font-weight: 400;
+      text-align: center;
+      color: #cecece;
+    }
+
+    span {
+      font-size: 17px;
+      color: ${colors.textDark};
+      font-weight: 400;
+    }
   }
 
   @media screen and (min-width: 992px) {
@@ -33,6 +44,7 @@ export const TitleList = styled.figure`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   img {
     margin-right: 13px;
@@ -48,6 +60,7 @@ export const TitleList = styled.figure`
     max-width: 373px;
     border-right: 1px solid #e1e0e0;
     border-bottom: 1px solid #f6f6f6;
+    justify-content: flex-start;
   }
 `;
 
@@ -153,7 +166,6 @@ export const ItemList = styled.li`
 
 export const EmptyList = styled.div`
   width: 100%;
-  max-width: 373px;
   height: 70px;
   padding: 0 23px;
 
@@ -161,10 +173,16 @@ export const EmptyList = styled.div`
   align-items: center;
   justify-content: center;
 
-  border-right: 1px solid #e1e0e0;
-  border-bottom: 1px solid #f6f6f6;
+  border: 1px solid #f6f6f6;
 
   span {
     color: ${colors.textLigth};
+  }
+
+  @media screen and (min-width: 992px) {
+    max-width: 373px;
+    border: none;
+    border-right: 1px solid #e1e0e0;
+    border-bottom: 1px solid #f6f6f6;
   }
 `;
