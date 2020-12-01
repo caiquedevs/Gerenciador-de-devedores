@@ -2,15 +2,15 @@ import styled, { createGlobalStyle } from 'styled-components';
 import arrowIcon from '../assets/arrow.svg';
 import * as colors from './colors';
 
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
    /* largura do scroll vertical e horizonal*/
-   ::-webkit-scrollbar { width: 0px; height: 10px; }
+   ::-webkit-scrollbar { width: 7px; height: 10px; }
    /* Fundo do scroll*/
    ::-webkit-scrollbar-track { background: transparent; }
    /* Cor do scroll*/
-   ::-webkit-scrollbar-thumb { background: silver; }
+   ::-webkit-scrollbar-thumb { background: ${colors.darkBlue}; }
   *{
     margin: 0;
     padding: 0;
@@ -30,6 +30,12 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 7px;
     margin-right: 7px;
   }
+  div.toastify{
+    display: flex;
+    align-items: center;
+    svg{ margin: 0 10px 0 10px;}
+  }
+
   @keyframes fadeInAnimate {
     from {
       opacity: 0;
@@ -48,30 +54,15 @@ const GlobalStyle = createGlobalStyle`
       transform: translate3d(0, 0, 0);
     }
   }
-  @keyframes leftAnimate {
+  @keyframes bottomAnimate {
     from {
       opacity: 0;
-      transform: translate3d(-60px, 0, 0);
+      transform: translate3d(0, 60px, 0);
     }
     to {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
-  }
-  @keyframes rightAnimate {
-    from {
-      opacity: 0;
-      transform: translate3d(60px, 0px, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  div.toastify{
-    display: flex;
-    align-items: center;
-    svg{ margin: 0 10px 0 10px;}
   }
 
   button {
@@ -92,23 +83,35 @@ const GlobalStyle = createGlobalStyle`
     filter: brightness(0.9);
   }
 
-  input[type="text"] {
+  input[type="text"], input[type="number"] {
     width: 100%;
     max-width: 275px;
     height: 40px;
     padding: 0 12px;
     margin-bottom: 10px;
 
-    color: ${colors.textLigth};
+    color: ${colors.dark};
     border: none;
     border-radius: 5px;
-    background: #EEEEEE;
+    background-color: #EEEEEE;
 
     ::-webkit-input-placeholder {
       font-size: 12px;
       text-transform: uppercase;
-      color: #BFBFBF;
+      color: #9a9a9a;
     }
+
+    :disabled {
+      color: #9a9a9a;
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 
   textarea {
@@ -117,7 +120,7 @@ const GlobalStyle = createGlobalStyle`
     height: 90px;
     padding: 13px 12px;
 
-    color: ${colors.textLigth};
+    color: ${colors.dark};
     border: none;
     border-radius: 5px;
     background: #EEEEEE;
@@ -128,6 +131,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 12px;
       text-transform: uppercase;
       color: #BFBFBF;
+    }
+
+    :disabled {
+      color: #9a9a9a;
     }
   }
 `;

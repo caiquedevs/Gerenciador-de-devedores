@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ToastContainer, Flip } from 'react-toastify';
 import DashboardPage from './pages/DashboardPage';
 import GlobalStyle from './styles';
-import store from './store/index.js';
+import store from './store';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <GlobalStyle />
       <ToastContainer
         transition={Flip}
-        position="bottom-right"
-        autoClose={5000}
+        position="top-right"
+        autoClose={2500}
         hideProgressBar
         newestOnTop={false}
         closeOnClick
