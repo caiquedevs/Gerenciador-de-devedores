@@ -49,13 +49,19 @@ Na sua linha de comando:
 
 ```bash
 # Clonar este repositório
-$ git clone https://github.com/caiquedevs/Movacar.git
+$ git clone https://github.com/caiquedevs/Gerenciador-de-devedores.git
 
 # Entre no repositório
 $ cd gerenciador-de-dividas
 
 # Instalar dependências
 $ yarn install
+
+# Variavel global
+Insira seu uuid no arquivo .env
+
+# Variavel global
+Salve as alterações do arquivo .env antes de startar
 
 # Iniciar
 $ yarn start
