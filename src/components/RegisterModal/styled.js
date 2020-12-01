@@ -6,7 +6,7 @@ export const ContainerModal = styled.div`
   height: 100vh;
   padding-top: 100px;
 
-  display: ${(props) => (props.active ? 'flex' : 'none')};
+  display: flex;
   justify-content: center;
 
   position: absolute;
@@ -23,7 +23,7 @@ export const Modal = styled.form`
   height: 475px;
   padding-top: 58px;
 
-  display: ${(props) => (props.active ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
   align-items: center;
 

@@ -1,25 +1,57 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import * as actionsApp from '../../store/modules/app/actions';
 
 import { ContainerModal, Modal } from './styled';
 import { Select } from '../../styles';
 
-export default function RegisterModal({
-  activeRegisterModal,
-  setActiveRegisterModal,
-  setItemMenuActive,
-}) {
+export default function RegisterModal({ setItemMenuActive }) {
+  const pessoas = useSelector((state) => state.app.pessoas);
+  const dispatch = useDispatch();
+
   const [changeSelect, setChangeSelect] = useState(false);
+  const [idUsuario, setIdUsuario] = useState('');
+  const [valorDevedor, setValorDevedor] = useState('');
+  const [motivoDevedor, setMotivoDevedor] = useState('');
+
+  const handleChangeSelect = (e) => {
+    setChangeSelect(true);
+    setIdUsuario(e.target.value);
+  };
+
+  const handleClickNewDivida = (e) => {
+    e.preventDefault();
+    if (idUsuario === '') return toast.info(' 👨‍🦰 Escolha um devedor primeiro');
+    if (valorDevedor === '') return toast.info(' 💰 Insira um valor primeiro');
+    if (motivoDevedor === '')
+      return toast.info(' 📄 Insira um motivo primeiro');
+
+    dispatch(
+      actionsApp.createDividaRequest({
+        data: {
+          idUsuario,
+          motivo: motivoDevedor,
+          valor: Number(valorDevedor),
+        },
+
+        menu: setItemMenuActive,
+      })
+    );
+  };
 
   return (
     <>
+      {/* Fechar modal ao clicar no container */}
       <ContainerModal
-        active={activeRegisterModal}
         onClick={() => {
-          setActiveRegisterModal(false);
+          dispatch(actionsApp.modalRegisterStatus(false));
           setItemMenuActive('home');
         }}
       />
-      <Modal active={activeRegisterModal}>
+
+      {/* Modal de Registro */}
+      <Modal onSubmit={(e) => handleClickNewDivida(e)}>
         <h2>Cadastre um novo Devedor !</h2>
         <p>
           Preencha o formulário a baixo para cadastrar um novo devedor para sua
@@ -28,20 +60,33 @@ export default function RegisterModal({
 
         <Select
           changed={changeSelect}
-          name="cars"
-          id="cars"
-          onChange={() => setChangeSelect(true)}
+          name="pessoas"
+          id="pessoas"
+          onChange={(e) => handleChangeSelect(e)}
         >
           <option hidden>Nome</option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          {pessoas.length >= 0 &&
+            pessoas.map((pessoa) => (
+              <option key={pessoa.id} value={pessoa.id}>
+                {pessoa.name}
+              </option>
+            ))}
         </Select>
 
-        <input placeholder="Valor" type="text" />
-        <textarea placeholder="Motivo" name="valor" id="valor" />
-        <button type="button">Criar</button>
+        <input
+          placeholder="Valor"
+          type="number"
+          onChange={(e) => setValorDevedor(e.target.value)}
+        />
+        <textarea
+          placeholder="Motivo"
+          name="valor"
+          id="valor"
+          onChange={(e) => setMotivoDevedor(e.target.value)}
+        />
+        <button onClick={(e) => handleClickNewDivida(e)} type="submit">
+          Criar
+        </button>
       </Modal>
     </>
   );
