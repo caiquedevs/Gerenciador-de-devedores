@@ -1,12 +1,41 @@
 import styled from 'styled-components';
 import * as colors from '../../styles/colors';
 
+export const BtnMobile = styled.div`
+  width: 100%;
+  max-width: 180px;
+  height: 50px;
+
+  display: ${(props) => (props.modal ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: center;
+
+  color: ${colors.ligth};
+  font-weight: 500;
+  border-radius: 30px;
+  background-color: ${colors.darkBlue};
+
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 90px);
+  z-index: 10;
+
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
+`;
+
 export const Menu = styled.nav`
   width: 100%;
   max-width: 80px;
   height: 100vh;
 
+  display: none;
   background-color: ${colors.darkBlue};
+
+  @media screen and (min-width: 992px) {
+    display: initial;
+  }
 `;
 
 export const List = styled.ul`
