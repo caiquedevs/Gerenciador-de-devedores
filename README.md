@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Gerenciador de Devedores" title="Gerenciador de Devedores" src="https://github.com/caiquedevs/Gerenciador-de-Devedores/blob/master/github/logo.svg" width="220px" />
+    <img alt="Gerenciador de Devedores" title="Gerenciador de Devedores" src="https://github.com/caiquedevs/Gerenciador-de-devedores/blob/main/github/logo.svg" width="220px" />
 </h1>
 
 <p align="center">
@@ -12,8 +12,8 @@
 <br>
 
 <p align="center">
-  <img alt="Gerenciador de Devedores" src="https://github.com/caiquedevs/Gerenciador-de-Devedores/blob/master/github/template.png" width="100%">
-  <img src="https://github.com/caiquedevs/Gerenciador-de-Devedores/blob/master/github/demo.gif" width="100%" />
+  <img alt="Gerenciador de Devedores" src="https://github.com/caiquedevs/Gerenciador-de-devedores/blob/main/github/template.png" width="100%">
+  <img src="https://github.com/caiquedevs/Gerenciador-de-devedores/blob/main/github/demo.gif" width="100%" />
 </p>
 
 ## 🚀 Tecnologias
@@ -45,27 +45,6 @@ Para clonar e executar este aplicativo, você precisará [Git] (https://git-scm.
 
 Na sua linha de comando:
 
-### Install API
-
-```bash
-# Clonar este repositório
-$ git clone https://github.com/caiquedevs/Movacar.git
-
-# Entre no repositório
-$ cd movacar/backend
-
-# Instalar dependências
-$ yarn install
-
-# Executar migrações
-$ yarn knex:migrate
-
-# Iniciar servidor
-$ yarn dev
-
-# Em execução na porta 3333
-```
-
 ### Instalar Front-end
 
 ```bash
@@ -73,7 +52,7 @@ $ yarn dev
 $ git clone https://github.com/caiquedevs/Movacar.git
 
 # Entre no repositório
-$ cd movacar/frontend
+$ cd gerenciador-de-dividas
 
 # Instalar dependências
 $ yarn install
