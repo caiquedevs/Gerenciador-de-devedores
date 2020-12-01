@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TiArrowSortedDown } from 'react-icons/ti';
 import * as actionsApp from '../../store/modules/app/actions';
 
-import { Section, List, ItemList } from './styled';
+import { Section, List, ItemList, BtnEdit, BtnDelete } from './styled';
 import ilustration from '../../assets/ilustration.svg';
 import optionsIcon from '../../assets/options.svg';
+import editIcon from '../../assets/iconEdit.svg';
+import deleteIcon from '../../assets/iconDelete.svg';
 
 export default function FormAreaComponent({ setItemMenuActive }) {
   const dividasPorDevedor = useSelector((state) => state.app.dividasPorDevedor);
@@ -128,7 +130,7 @@ export default function FormAreaComponent({ setItemMenuActive }) {
                 </div>
 
                 {/* Corpo do item da lista */}
-                <input type="checkbox" id={divida._id} />
+                <input type="checkbox" id={divida._id} defaultChecked={false} />
                 <div className="bodyItemList">
                   <hr />
                   <div className="text-group">
@@ -152,6 +154,21 @@ export default function FormAreaComponent({ setItemMenuActive }) {
                       }).format(divida.valor)}
                     </small>
                   </div>
+
+                  <BtnEdit
+                    type="button"
+                    onClick={() =>
+                      handleClickShowModalUpdate(divida, true, false)
+                    }
+                  >
+                    <img src={editIcon} alt="Edit icon" />
+                  </BtnEdit>
+                  <BtnDelete
+                    type="button"
+                    onClick={() => handleClickExcluirDivida(divida, index)}
+                  >
+                    <img src={deleteIcon} alt="Delete icon" />
+                  </BtnDelete>
                 </div>
               </ItemList>
             ))}

@@ -16,34 +16,11 @@ export const Section = styled.section`
 
   overflow: auto;
 
-  div.title {
-    width: 90%;
-    margin-bottom: 20px;
+  div.info-group {
+    display: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    div.title-group {
-      display: flex;
-      align-items: center;
-
-      h3 {
-        font-size: 25px;
-        color: ${colors.darkBlue};
-        margin-right: 7px;
-      }
-
-      span {
-        font-size: 18px;
-      }
-    }
-
-    button {
-      font-size: 15px;
-      padding: 7px 15px;
-      background-color: ${colors.darkBlue};
-      color: ${colors.ligth};
+    @media screen and (min-width: 992px) {
+      display: initial;
     }
   }
 
@@ -71,6 +48,49 @@ export const Section = styled.section`
 
     &:active {
       filter: brightness(0.7);
+    }
+  }
+
+  div.title {
+    width: 90%;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.title-group {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        font-size: 25px;
+        color: ${colors.darkBlue};
+        margin-right: 7px;
+      }
+
+      span {
+        font-size: 18px;
+        display: none;
+      }
+
+      @media screen and (min-width: 992px) {
+        span {
+          display: initial;
+        }
+      }
+    }
+
+    button {
+      font-size: 15px;
+      padding: 7px 15px;
+      background-color: ${colors.darkBlue};
+      color: ${colors.ligth};
+      display: none;
+
+      @media screen and (min-width: 992px) {
+        display: initial;
+      }
     }
   }
 `;
@@ -147,7 +167,7 @@ export const ItemList = styled.li`
     height: 65px;
     min-height: 50px;
 
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-start;
 
@@ -158,12 +178,16 @@ export const ItemList = styled.li`
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    @media screen and (min-width: 992px) {
+      display: flex;
+    }
   }
 
   div.bodyItemList {
     width: 100%;
-    height: 0;
-    opacity: 0;
+    height: auto;
+    opacity: 1;
     overflow: hidden;
 
     transition: 1s all;
@@ -174,6 +198,12 @@ export const ItemList = styled.li`
 
     div.text-group {
       margin: 20px 0;
+    }
+
+    @media screen and (min-width: 992px) {
+      height: 0;
+      opacity: 0;
+      overflow: hidden;
     }
   }
 
@@ -204,4 +234,17 @@ export const ItemList = styled.li`
 
   border: 1px solid #cecece;
   border-radius: 5px;
+`;
+
+export const BtnEdit = styled.button`
+  width: auto;
+  position: absolute;
+  right: 45px;
+  bottom: 20px;
+`;
+export const BtnDelete = styled.button`
+  width: auto;
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
 `;
