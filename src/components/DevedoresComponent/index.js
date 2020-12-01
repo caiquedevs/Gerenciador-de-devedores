@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actionsApp from '../../store/modules/app/actions';
 
-import { TitleList, List, ItemList, EmptyList } from './styled';
+import { Section, TitleList, List, ItemList, EmptyList } from './styled';
 
 import folder from '../../assets/folder.svg';
 import documentIcon from '../../assets/document.svg';
@@ -16,7 +16,7 @@ export default function DevedoresComponent() {
   };
 
   return (
-    <section>
+    <Section>
       {/* Titulo da lista  */}
       <TitleList>
         <img src={folder} alt="folder icon" />
@@ -58,6 +58,7 @@ export default function DevedoresComponent() {
             </ItemList>
           ))}
       </List>
-    </section>
+      <span id="info-footer">Selecione um devedor</span>
+    </Section>
   );
 }
