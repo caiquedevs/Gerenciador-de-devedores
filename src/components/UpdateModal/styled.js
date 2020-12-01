@@ -2,19 +2,24 @@ import styled from 'styled-components';
 import * as colors from '../../styles/colors';
 
 export const ContainerModal = styled.div`
-  width: calc(100% - 80px);
+  width: 100%;
   height: 100vh;
   padding-top: 100px;
 
   display: flex;
   justify-content: center;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 3;
 
   background-color: rgba(63, 66, 75, 0.85);
+
+  @media screen and (min-width: 992px) {
+    width: calc(100% - 80px);
+    position: absolute;
+  }
 `;
 
 export const Modal = styled.form`
@@ -27,8 +32,8 @@ export const Modal = styled.form`
   flex-direction: column;
   align-items: center;
 
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 90px;
   left: calc(50% - 180px);
   z-index: 4;
 
@@ -36,6 +41,10 @@ export const Modal = styled.form`
   background-color: ${colors.ligth};
 
   animation: topAnimate 0.5s;
+
+  @media screen and (min-width: 992px) {
+    position: absolute;
+  }
 
   h2 {
     margin-bottom: 7px;
@@ -61,7 +70,8 @@ export const Modal = styled.form`
     margin-top: 10px;
   }
 
-  button {
+  button.btn-update,
+  button.btn-delete {
     width: 275px;
     height: 40px;
     margin-top: 22px;
@@ -89,4 +99,12 @@ export const Modal = styled.form`
     border: 1px solid ${colors.darkBlue};
     color: ${colors.darkBlue};
   }
+`;
+
+export const BtnCloseModal = styled.button`
+  color: ${colors.darkBlue};
+  font-size: 40px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 `;

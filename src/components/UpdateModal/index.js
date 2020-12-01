@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaWindowClose } from 'react-icons/fa';
 import * as actionsApp from '../../store/modules/app/actions';
 
-import { ContainerModal, Modal } from './styled';
+import { ContainerModal, Modal, BtnCloseModal } from './styled';
 
 export default function UpdateModal() {
   const modalUpdate = useSelector((state) => state.app.modalUpdate);
@@ -51,6 +52,12 @@ export default function UpdateModal() {
 
       {/* Modal de update */}
       <Modal>
+        <BtnCloseModal
+          type="button"
+          onClick={() => handleClickShowModalUpdate(null, false, false)}
+        >
+          <FaWindowClose />
+        </BtnCloseModal>
         <h2>Atualize este devedor !</h2>
         <p>
           Preencha o formulário a baixo para atualizar este devedor na sua lista
@@ -71,7 +78,11 @@ export default function UpdateModal() {
           id="valor"
         />
 
-        <button onClick={handleClickUpdateDivida} type="button">
+        <button
+          className="btn-update"
+          onClick={handleClickUpdateDivida}
+          type="button"
+        >
           Atualizar
         </button>
         <button

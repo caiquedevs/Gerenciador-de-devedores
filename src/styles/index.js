@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
    /* largura do scroll vertical e horizonal*/
-   ::-webkit-scrollbar { width: 7px; height: 10px; }
+   ::-webkit-scrollbar { width: 0px; height: 0px; }
    /* Fundo do scroll*/
    ::-webkit-scrollbar-track { background: transparent; }
    /* Cor do scroll*/
@@ -136,6 +136,11 @@ const GlobalStyle = createGlobalStyle`
     :disabled {
       color: #9a9a9a;
     }
+  }
+
+  @media screen and (min-width: 992px) {
+    /* largura do scroll vertical e horizonal*/
+   ::-webkit-scrollbar { width: 7px; height: 7px; }
   }
 `;
 
