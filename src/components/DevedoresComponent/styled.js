@@ -110,6 +110,13 @@ export const ItemList = styled.li`
     border-bottom: 1px solid #f6f6f6;
   }
 
+  @media screen and (max-width: 991px) {
+    &.active {
+      border: 3px solid #0a84da;
+      border-radius: 13px;
+    }
+  }
+
   button.btn-info {
     display: flex;
     flex-direction: column;

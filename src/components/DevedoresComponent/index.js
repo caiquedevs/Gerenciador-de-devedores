@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actionsApp from '../../store/modules/app/actions';
 
@@ -12,8 +12,11 @@ export default function DevedoresComponent() {
   const dividasPorDevedor = useSelector((state) => state.app.dividasPorDevedor);
   const dispatch = useDispatch();
 
+  const [devedorSelected, setDevedorSelected] = useState('');
+
   const handleClickShowDividas = (idUsuario) => {
     dispatch(actionsApp.selectDevedor(idUsuario));
+    setDevedorSelected(idUsuario);
   };
 
   return (
@@ -42,7 +45,10 @@ export default function DevedoresComponent() {
       <List>
         {devedores.length > 0 &&
           devedores.map((devedor, index) => (
-            <ItemList key={index}>
+            <ItemList
+              className={devedorSelected === devedor.idUsuario ? 'active' : ''}
+              key={index}
+            >
               <button
                 type="button"
                 className="btn-info"

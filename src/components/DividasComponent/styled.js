@@ -5,7 +5,7 @@ export const Section = styled.section`
   width: 100%;
   padding-top: ${(props) =>
     props.hasDividas && props.hasDividas.length > 0 ? '30px' : '90px'};
-  padding-bottom: 20px;
+  padding-bottom: 100px;
 
   display: flex;
   justify-content: center;
@@ -117,7 +117,7 @@ export const List = styled.ul`
   }
 
   @media screen and (min-width: 992px) {
-    display: initial;
+    display: flex;
     height: calc(100vh - 135px);
   }
 `;
