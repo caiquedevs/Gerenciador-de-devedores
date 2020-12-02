@@ -16,7 +16,7 @@ export const BtnMobile = styled.div`
   background-color: ${colors.darkBlue};
 
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   left: calc(50% - 90px);
   z-index: 10;
 

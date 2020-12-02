@@ -3,9 +3,9 @@ import * as colors from '../../styles/colors';
 
 export const Section = styled.section`
   width: 100%;
-  max-width: 100%;
   padding-top: ${(props) =>
     props.hasDividas && props.hasDividas.length > 0 ? '30px' : '90px'};
+  padding-bottom: 20px;
 
   display: flex;
   justify-content: center;
@@ -14,13 +14,13 @@ export const Section = styled.section`
   flex-direction: ${(props) =>
     props.hasDividas && props.hasDividas.length > 0 ? 'column' : 'row'};
 
-  overflow: auto;
-
   div.info-group {
     display: none;
 
     @media screen and (min-width: 992px) {
       display: initial;
+      padding-bottom: 0;
+      overflow: auto;
     }
   }
 
@@ -97,7 +97,7 @@ export const Section = styled.section`
 
 export const List = styled.ul`
   width: 100%;
-  height: calc(100vh - 135px);
+  height: auto;
 
   display: flex;
   flex-direction: column;
@@ -114,6 +114,11 @@ export const List = styled.ul`
       height: auto;
       opacity: 1;
     }
+  }
+
+  @media screen and (min-width: 992px) {
+    display: initial;
+    height: calc(100vh - 135px);
   }
 `;
 
