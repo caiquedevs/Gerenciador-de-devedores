@@ -11,12 +11,6 @@
 
 <br>
 
-<p align="center">
-  <a href="https://caiquedevs.github.io/Gerenciador-de-devedores/" target="_blank">
-    <img src="https://github.com/caiquedevs/Gerenciador-de-devedores/blob/main/github/btnview.svg" alt="Run in Insomnia">
-  </a>
-</p>
-
 <br>
 
 <p align="center">
